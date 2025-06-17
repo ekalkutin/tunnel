@@ -1,1 +1,1 @@
-export { AccountFeatureModule } from './account.module';
+export { AccountModule } from './account.module';

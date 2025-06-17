@@ -1,21 +1,13 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import {
-  AccountRepositoryPort,
-  RoleRepositoryPort,
-} from '../domain/ports/repositories';
+import { AccountRepositoryPort } from '../domain/ports';
 
-import {
-  AccountRepositoryAdapter,
-  RoleRepositoryAdapter,
-} from './adapters/repositories';
+import { AccountRepositoryAdapter } from './adapters/persistence';
 import {
   AccountEntity,
   AccountSchema,
-  RoleEntity,
-  RoleSchema,
-} from './adapters/repositories/entities';
+} from './adapters/persistence/account.entity';
 
 @Module({
   imports: [
@@ -24,23 +16,14 @@ import {
         name: AccountEntity.name,
         schema: AccountSchema,
       },
-      {
-        name: RoleEntity.name,
-        schema: RoleSchema,
-      },
     ]),
   ],
-
   providers: [
     {
       provide: AccountRepositoryPort,
       useClass: AccountRepositoryAdapter,
     },
-    {
-      provide: RoleRepositoryPort,
-      useClass: RoleRepositoryAdapter,
-    },
   ],
-  exports: [AccountRepositoryPort, RoleRepositoryPort],
+  exports: [AccountRepositoryPort],
 })
-export class InfrastructureModule {}
+export class AccountInfrastructureModule {}

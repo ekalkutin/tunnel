@@ -1,10 +1,10 @@
-import { Role } from './role.model';
+import { Role } from 'features/rbac/domain/models';
 
 export class Account {
-  constructor(
-    public readonly id: string,
-    public readonly email: string,
-    public readonly password: string,
-    public readonly role: Role,
-  ) {}
+  public id: string;
+  public email: string;
+  public password: string;
+  public role: Role;
+
+  constructor() {}
 }
