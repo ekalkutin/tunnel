@@ -4,13 +4,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
+    "target": "esnext",
     "sourceRoot": "./src",
     "rootDir": "./src",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "outDir": "build",
     "paths": {
-      "features/*": ["./features/*"],
-      "infrastructure/*": ["./infrastructure/*"]
+      "infrastructure/*": ["./src/infrastructure/*"],
+      "application/*": ["./src/application/*"],
+      "domain/*": ["./src/domain/*"]
     }
   },
   "include": ["src/"]

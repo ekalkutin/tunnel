@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 
-import { AccountModule } from 'features/account';
-import { TunnelModule } from 'features/tunnel';
 import { AppConfigModule } from 'infrastructure/config';
-import { DatabaseModule } from 'infrastructure/persistence/database';
+
+import { APIModule } from './api';
+import { ApplicationModule } from './application';
 
 @Module({
-  imports: [AppConfigModule, DatabaseModule, AccountModule, TunnelModule],
+  imports: [AppConfigModule, ApplicationModule, APIModule],
 })
 export class MainModule {}
