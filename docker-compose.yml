@@ -1,15 +1,6 @@
 services:
   database:
-    image: mongo:latest
-    ports:
-      - '27017:27017'
-    volumes:
-      - mongodb_data:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-  postgres:
-    container_name: postgres
+    container_name: postgres_tunnel
     image: postgres
     environment:
       POSTGRES_PASSWORD: postgres
@@ -21,5 +12,4 @@ services:
       - '5432:5432'
 
 volumes:
-  mongodb_data:
   postgres_data:
