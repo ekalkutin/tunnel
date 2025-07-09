@@ -11,8 +11,7 @@
     "outDir": "build",
     "paths": {
       "infrastructure/*": ["./src/infrastructure/*"],
-      "application/*": ["./src/application/*"],
-      "domain/*": ["./src/domain/*"]
+      "features/*": ["./src/features/*"]
     }
   },
   "include": ["src/"]

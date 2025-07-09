@@ -1,8 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 
-import { CreateRoleDto } from 'domain/dtos/role';
-import { Role } from 'domain/entities';
-import { RoleRepositoryPort } from 'domain/ports';
+import { Role } from 'features/rbac/domain/entities';
+import { RoleRepositoryPort } from 'features/rbac/domain/ports';
 import { PrismaService } from 'infrastructure/persistence/database/prisma';
 
 import { RoleMapper } from './role.mapper';
@@ -11,9 +10,17 @@ import { RoleMapper } from './role.mapper';
 export class RoleRepositoryAdapter implements RoleRepositoryPort {
   constructor(@Inject(PrismaService) private readonly prisma: PrismaService) {}
 
-  async create(dto: CreateRoleDto): Promise<Role> {
-    const item = await this.prisma.role.create({
-      data: dto,
+  async save(role: Role): Promise<Role> {
+    const item = await this.prisma.role.upsert({
+      where: {
+        id: role.id,
+      },
+      create: role,
+      update: {
+        code: role.code,
+        title: role.title,
+        permissions: role.permissions,
+      },
     });
 
     return RoleMapper.toDomain(item);

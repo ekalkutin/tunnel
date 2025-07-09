@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { RoleRepositoryPort } from 'domain/ports';
+import { RoleRepositoryPort } from 'features/rbac/domain/ports';
 import { DatabaseModule } from 'infrastructure/persistence/database';
 
 import { RoleRepositoryAdapter } from './role.adapter';

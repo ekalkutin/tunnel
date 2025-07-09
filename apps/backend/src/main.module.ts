@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppConfigModule } from 'infrastructure/config';
 
-import { APIModule } from './api';
-import { ApplicationModule } from './application';
+import { AppConfigModule } from 'infrastructure/config';
+import { CQRSModule } from 'infrastructure/cqrs';
+
+import { RBACModule } from './features/rbac/rbac.module';
 
 @Module({
-  imports: [AppConfigModule, ApplicationModule, APIModule],
+  imports: [AppConfigModule, CQRSModule, RBACModule],
 })
 export class MainModule {}
