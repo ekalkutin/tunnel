@@ -18,7 +18,7 @@ export default defineConfig([
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: './packages/*/tsconfig.json',
+          project: './apps/*/tsconfig.json',
         },
       },
     },
@@ -45,6 +45,7 @@ export default defineConfig([
 
       // General rules
       'import/newline-after-import': ['error'],
+      '@typescript-eslint/no-empty-object-type': 'off',
       'no-console': 'error',
     },
   },
