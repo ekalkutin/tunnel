@@ -45,6 +45,7 @@ export default defineConfig([
 
       // General rules
       'import/newline-after-import': ['error'],
+      '@typescript-eslint/no-empty-object-type': 'off',
       'no-console': 'error',
     },
   },

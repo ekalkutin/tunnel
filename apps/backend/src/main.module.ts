@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 
+import { IAMModule } from 'features/iam';
 import { AppConfigModule } from 'infrastructure/config';
 import { CQRSModule } from 'infrastructure/cqrs';
 
@@ -10,6 +11,7 @@ import { CQRSModule } from 'infrastructure/cqrs';
     CQRSModule,
 
     // Features
+    IAMModule,
   ],
 })
 export class MainModule {}
