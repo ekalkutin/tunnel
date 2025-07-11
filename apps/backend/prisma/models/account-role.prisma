@@ -1,0 +1,10 @@
+model AccountRole {
+  account   Account @relation(fields: [accountId], references: [id])
+  accountId String
+
+  role   Role   @relation(fields: [roleId], references: [id])
+  roleId String
+
+  @@id([accountId, roleId])
+  @@map("account_roles")
+}

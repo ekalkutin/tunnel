@@ -1,0 +1,9 @@
+model Account {
+  id       String @id
+  username String @unique
+  password String
+
+  roles AccountRole[]
+
+  @@map("accounts")
+}

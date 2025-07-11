@@ -35,6 +35,5 @@
       "eslint --fix",
       "prettier --write"
     ]
-  },
-  "dependencies": {}
+  }
 }
