@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateAccountDto {
   @IsString()
@@ -7,7 +7,6 @@ export class CreateAccountDto {
   @IsString()
   public readonly password!: string;
 
-  @IsOptional()
   @IsString()
-  public readonly roleId?: string;
+  public readonly roleId!: string;
 }

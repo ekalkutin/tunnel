@@ -1,8 +1,8 @@
 import { Body, Controller, Inject, Post } from '@nestjs/common';
 
-import { CreateAccountUseCase } from 'features/iam/application/use-cases/create-account';
+import { CreateAccountUseCase } from 'features/iam/application/use-cases';
 
-import { CreateAccountDto } from './dto';
+import { CreateAccountDto } from './create-account.dto';
 
 @Controller('/v1/iam/accounts')
 export class CreateAccountController {

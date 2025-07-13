@@ -13,7 +13,12 @@ export class Role {
     this.description = props.description;
   }
 
-  static create(props: Omit<Role, 'id'> & { id?: string }): Role {
+  static create(
+    props: Omit<Role, 'id' | 'description'> & {
+      id?: string;
+      description?: string | null;
+    },
+  ): Role {
     return new Role({
       id: props.id || v4(),
       code: props.code,

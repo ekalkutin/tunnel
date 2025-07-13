@@ -6,7 +6,7 @@ import { CQRSModule } from 'infrastructure/cqrs';
 
 @Module({
   imports: [
-    // Common Infra
+    // Common Infrastructure
     AppConfigModule,
     CQRSModule,
 
