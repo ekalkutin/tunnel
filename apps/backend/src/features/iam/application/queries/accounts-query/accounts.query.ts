@@ -1,9 +1,20 @@
 import { Query } from '@nestjs/cqrs';
 
-import { Account, QueryOptions } from 'features/iam/domain/account';
+type Input = {
+  readonly username?: string;
+};
 
-export class AccountsQuery extends Query<Account[]> {
-  constructor(public readonly options?: QueryOptions) {
+type Output = {
+  readonly id: string;
+  readonly username: string;
+  readonly role: {
+    readonly id: string;
+    readonly title: string;
+  };
+};
+
+export class AccountsQuery extends Query<Output[]> {
+  constructor(public readonly input?: Input) {
     super();
   }
 }

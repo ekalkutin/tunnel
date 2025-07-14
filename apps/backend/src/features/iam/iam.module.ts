@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 
 import { IAMAPIModule } from './api/api.module';
+import { IAMDomainModule } from './domain/domain.module';
 
 @Module({
-  imports: [IAMAPIModule],
+  imports: [IAMDomainModule, IAMAPIModule],
   exports: [],
 })
 export class IAMModule {}

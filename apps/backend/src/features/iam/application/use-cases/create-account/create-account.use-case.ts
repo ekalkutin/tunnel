@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 
-import { Account } from 'features/iam/domain/account';
+import { Account } from 'features/iam/domain';
 
 import { CreateAccountCommand } from '../../commands/create-account';
 

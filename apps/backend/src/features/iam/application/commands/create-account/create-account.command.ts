@@ -1,8 +1,12 @@
 import { Command } from '@nestjs/cqrs';
 
-import { Account } from 'features/iam/domain/account';
+import { Account } from 'features/iam/domain';
 
-type Input = Omit<Account, 'id'>;
+type Input = {
+  readonly username: string;
+  readonly password: string;
+  readonly roleId: string;
+};
 
 export class CreateAccountCommand extends Command<Account> {
   constructor(public readonly input: Input) {

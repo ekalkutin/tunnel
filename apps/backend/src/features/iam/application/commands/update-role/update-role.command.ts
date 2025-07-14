@@ -1,6 +1,6 @@
 import { Command } from '@nestjs/cqrs';
 
-import { Role } from 'features/iam/domain/role';
+import { Role } from 'features/iam/domain';
 
 type Input = Partial<Role> & {
   readonly id: string;

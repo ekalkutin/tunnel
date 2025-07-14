@@ -1,24 +1,23 @@
 import { Module } from '@nestjs/common';
 
-import { AccountRepositoryPort } from 'features/iam/domain/account';
-import { RoleRepositoryPort } from 'features/iam/domain/role';
+import { AccountRepository, RoleRepository } from 'features/iam/domain';
 import { DatabaseModule } from 'infrastructure/persistence/database';
 
-import { AccountRepositoryAdapter } from './account-repository.adapter';
-import { RoleRepositoryAdapter } from './role-repository.adapter';
+import { AccountRepositoryAdapter } from './account';
+import { RoleRepositoryAdapter } from './role';
 
 @Module({
   imports: [DatabaseModule],
   providers: [
     {
-      provide: AccountRepositoryPort,
+      provide: AccountRepository,
       useClass: AccountRepositoryAdapter,
     },
     {
-      provide: RoleRepositoryPort,
+      provide: RoleRepository,
       useClass: RoleRepositoryAdapter,
     },
   ],
-  exports: [AccountRepositoryPort, RoleRepositoryPort],
+  exports: [DatabaseModule, AccountRepository, RoleRepository],
 })
 export class IAMPersistenceModule {}

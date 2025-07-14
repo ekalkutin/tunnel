@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { IAMPersistenceModule } from '../infrastructure/persistence';
 
 import { CreateAccountHandler } from './commands/create-account';
+import { AccountsQueryHandler } from './queries/accounts-query';
 import {
   CreateAccountUseCase,
   CreateRoleUseCase,
@@ -17,6 +18,7 @@ import {
     CreateAccountHandler,
 
     QueryAccountsUseCase,
+    AccountsQueryHandler,
 
     // Roles
     CreateRoleUseCase,
@@ -27,6 +29,7 @@ import {
     CreateAccountUseCase,
 
     QueryAccountsUseCase,
+    AccountsQueryHandler,
 
     // Roles
     CreateRoleUseCase,

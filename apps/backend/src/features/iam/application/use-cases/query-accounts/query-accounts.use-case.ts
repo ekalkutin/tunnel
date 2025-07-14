@@ -1,18 +1,18 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Account } from '@prisma/client';
+import { QueryBus } from '@nestjs/cqrs';
 
-import { AccountRepositoryPort } from 'features/iam/domain/account';
+import { AccountsQuery } from '../../queries/accounts-query';
 
-type Input = Partial<Account>;
+type Input = {
+  readonly username?: string;
+};
 
 @Injectable()
 export class QueryAccountsUseCase {
-  constructor(
-    @Inject(AccountRepositoryPort)
-    private readonly accountRepository: AccountRepositoryPort,
-  ) {}
+  constructor(@Inject(QueryBus) private readonly queryBus: QueryBus) {}
 
-  public async execute(input: Input): Promise<Account[]> {
-    return this.accountRepository.query(input);
+  public async execute(input: Input) {
+    const accounts = await this.queryBus.execute(new AccountsQuery(input));
+    return accounts;
   }
 }

@@ -1,6 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { CommandBus } from '@nestjs/cqrs';
 
-import { Role, RoleRepositoryPort } from 'features/iam/domain/role';
+import { Role } from 'features/iam/domain';
+
+import { CreateRoleCommand } from '../../commands/create-role';
 
 type Input = {
   readonly code: string;
@@ -11,13 +14,13 @@ type Input = {
 @Injectable()
 export class CreateRoleUseCase {
   constructor(
-    @Inject(RoleRepositoryPort)
-    private readonly roleRepository: RoleRepositoryPort,
+    @Inject(CommandBus)
+    private readonly commandBus: CommandBus,
   ) {}
 
   public async execute(input: Input): Promise<Role> {
-    const role = await this.roleRepository.save(
-      Role.create({
+    const role = await this.commandBus.execute(
+      new CreateRoleCommand({
         code: input.code,
         title: input.title,
         description: input.description,

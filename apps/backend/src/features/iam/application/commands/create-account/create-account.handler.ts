@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
-import { Account, AccountRepositoryPort } from 'features/iam/domain/account';
+import { Account, AccountRepository } from 'features/iam/domain';
 
 import { CreateAccountCommand } from './create-account.command';
 
@@ -10,8 +10,8 @@ export class CreateAccountHandler
   implements ICommandHandler<CreateAccountCommand>
 {
   constructor(
-    @Inject(AccountRepositoryPort)
-    private readonly accountRepositoryPort: AccountRepositoryPort,
+    @Inject(AccountRepository)
+    private readonly accountRepository: AccountRepository,
   ) {}
 
   public async execute(command: CreateAccountCommand): Promise<Account> {
@@ -21,6 +21,6 @@ export class CreateAccountHandler
       roleId: command.input.roleId,
     });
 
-    return this.accountRepositoryPort.save(account);
+    return this.accountRepository.save(account);
   }
 }
