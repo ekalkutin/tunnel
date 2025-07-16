@@ -18,6 +18,7 @@ export class CreateRoleHandler implements ICommandHandler<CreateRoleCommand> {
         code: command.input.code,
         title: command.input.title,
         description: command.input.description || null,
+        permissions: command.input.permissions || [],
       }),
     );
 

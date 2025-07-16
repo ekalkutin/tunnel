@@ -1,7 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 
-import { Role } from 'features/iam/domain';
 import { PrismaService } from 'infrastructure/persistence/database/prisma';
 
 import { RolesQuery } from './roles-query';
@@ -13,7 +12,7 @@ export class RolesQueryHandler implements IQueryHandler<RolesQuery> {
     private readonly prisma: PrismaService,
   ) {}
 
-  public async execute(query: RolesQuery): Promise<Role[]> {
+  public async execute(query: RolesQuery) {
     const roles = await this.prisma.role.findMany({
       where: query.input,
     });

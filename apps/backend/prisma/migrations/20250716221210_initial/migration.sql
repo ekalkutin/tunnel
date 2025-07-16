@@ -14,6 +14,7 @@ CREATE TABLE "roles" (
     "code" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT,
+    "permissions" TEXT NOT NULL,
 
     CONSTRAINT "roles_pkey" PRIMARY KEY ("id")
 );

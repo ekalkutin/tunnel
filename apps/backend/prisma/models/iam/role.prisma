@@ -3,6 +3,7 @@ model Role {
   code        String  @unique
   title       String
   description String?
+  permissions String
 
   accounts Account[]
 

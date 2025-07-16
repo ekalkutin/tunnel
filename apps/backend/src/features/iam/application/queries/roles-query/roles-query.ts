@@ -1,10 +1,9 @@
 import { Query } from '@nestjs/cqrs';
 
-import { Role } from 'features/iam/domain';
-
 type Input = {};
+type Output = {};
 
-export class RolesQuery extends Query<Role[]> {
+export class RolesQuery extends Query<Output[]> {
   constructor(public readonly input?: Input) {
     super();
   }

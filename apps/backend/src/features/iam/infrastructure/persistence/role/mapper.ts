@@ -1,4 +1,5 @@
 import { Role } from 'features/iam/domain';
+import { SystemPermission } from 'features/iam/domain/constants';
 
 import { RolePersistenceModel } from './role.type';
 
@@ -9,6 +10,9 @@ export class RoleMapper {
       code: props.code,
       title: props.title,
       description: props.description,
+      permissions: props.permissions
+        .split(',')
+        .filter(Boolean) as SystemPermission[],
     });
   }
   public static toPersistence(props: Role): RolePersistenceModel {
@@ -17,6 +21,7 @@ export class RoleMapper {
       code: props.code,
       title: props.title,
       description: props.description,
+      permissions: props.permissions.join(','),
     };
   }
 }
