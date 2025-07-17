@@ -8,7 +8,7 @@ import { AccountQueryHandler } from './queries/account-query';
 import { AccountsQueryHandler } from './queries/accounts-query';
 import { RoleQueryHandler } from './queries/role-query';
 import { RolesQueryHandler } from './queries/roles-query';
-import { AccountService } from './services/account/account.service';
+import { IAMService } from './services/account/iam.service';
 import {
   CreateAccountUseCase,
   CreateRoleUseCase,
@@ -22,7 +22,7 @@ import {
     // Accounts
     CreateAccountUseCase,
     CreateAccountHandler,
-    AccountService,
+    IAMService,
 
     QueryAccountsUseCase,
     AccountsQueryHandler,
@@ -39,7 +39,7 @@ import {
     // Accounts
     CreateAccountUseCase,
     QueryAccountsUseCase,
-    AccountService,
+    IAMService,
 
     // Roles
     CreateRoleUseCase,

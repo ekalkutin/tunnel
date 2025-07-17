@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 
 import { JWTAuthService } from 'features/auth/application/services/jwt';
 import { AuthenticatedUser } from 'features/auth/domain/entities';
-import { AccountService } from 'features/iam/application/services/account';
+import { IAMService } from 'features/iam/application/services/account';
 
 type Input = {
   readonly username: string;
@@ -12,14 +12,15 @@ type Input = {
 export class SignInUseCase {
   constructor(
     @Inject(JWTAuthService) private readonly jwtAuthService: JWTAuthService,
-    @Inject(AccountService) private readonly accountService: AccountService,
+    @Inject(IAMService)
+    private readonly iamService: IAMService,
   ) {}
 
   public async execute(input: Input) {
-    const account =
-      await this.accountService.findAccountWithPermissionsByUsername(
-        input.username,
-      );
+    const account = await this.iamService.findUserByCredentials(
+      input.username,
+      input.password,
+    );
 
     const authenticatedUser = new AuthenticatedUser(
       account.id,

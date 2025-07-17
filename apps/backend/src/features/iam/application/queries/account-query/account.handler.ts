@@ -19,8 +19,8 @@ export class AccountQueryHandler implements IQueryHandler<AccountQuery> {
 
     const accounts = await this.prisma.account.findUniqueOrThrow({
       where: {
-        id: query.input?.id,
-        username: query.input?.username,
+        id: query.input.id,
+        username: query.input.username,
       },
       select: {
         id: true,

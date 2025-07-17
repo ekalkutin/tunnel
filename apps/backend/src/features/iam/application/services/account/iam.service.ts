@@ -5,10 +5,11 @@ import { AccountQuery } from '../../queries/account-query';
 import { RoleQuery } from '../../queries/role-query';
 
 @Injectable()
-export class AccountService {
+export class IAMService {
   constructor(@Inject(QueryBus) private readonly queryBus: QueryBus) {}
 
-  public async findAccountWithPermissionsByUsername(username: string) {
+  public async findUserByCredentials(username: string, password: string) {
+    void password;
     const account = await this.queryBus.execute(
       new AccountQuery({
         username,
