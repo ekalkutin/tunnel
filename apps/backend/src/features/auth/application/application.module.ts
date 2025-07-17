@@ -8,6 +8,6 @@ import { SignInUseCase } from './use-cases/sign-in';
 @Module({
   imports: [IAMApplicationModule],
   providers: [JWTAuthService, SignInUseCase],
-  exports: [JWTAuthService, SignInUseCase],
+  exports: [SignInUseCase],
 })
 export class AuthApplicationModule {}

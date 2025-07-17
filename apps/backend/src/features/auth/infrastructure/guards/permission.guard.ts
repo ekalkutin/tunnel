@@ -6,18 +6,20 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
+
+import { JWTAuthService } from 'features/auth/application/services/jwt';
+import { SystemPermission } from 'features/iam/domain/constants';
 
 @Injectable()
 export class PermissionGuard implements CanActivate {
   constructor(
     @Inject(Reflector) private readonly reflector: Reflector,
-    @Inject(JwtService) private readonly jwtService: JwtService,
+    @Inject(JWTAuthService) private readonly jwtAuthService: JWTAuthService,
   ) {}
 
   public async canActivate(context: ExecutionContext): Promise<boolean> {
-    const permission = this.reflector.get<string>(
+    const permission = this.reflector.get<SystemPermission>(
       'permission',
       context.getHandler(),
     );
@@ -33,13 +35,12 @@ export class PermissionGuard implements CanActivate {
       throw new UnauthorizedException();
     }
 
-    const payload = await this.jwtService.verify(token, {
-      secret: 'some-secret',
-    });
+    const authenticatedUser =
+      await this.jwtAuthService.verifyAndDecodeToken(token);
 
-    request['user'] = payload;
+    request['user'] = authenticatedUser;
 
-    const hasPermission = payload.permissions.includes(permission);
+    const hasPermission = authenticatedUser.permissions.includes(permission);
     if (hasPermission) return true;
     return false;
   }

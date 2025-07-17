@@ -11,6 +11,8 @@ const ENV_VALIDATION_SCHEMA: ObjectSchema<EnvironmentConfig> = Joi.object({
   DB_PASSWORD: Joi.string().required(),
   DB_USERNAME: Joi.string().default('root'),
   DB_NAME: Joi.string().default('tunnel_dev'),
+
+  APP_CRYPTO_SALT: Joi.string().required(),
 });
 
 export default ENV_VALIDATION_SCHEMA;

@@ -25,6 +25,7 @@ export class AccountQueryHandler implements IQueryHandler<AccountQuery> {
       select: {
         id: true,
         username: true,
+        password: true,
         role: {
           select: {
             id: true,

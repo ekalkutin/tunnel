@@ -8,8 +8,7 @@ import { RoleQuery } from '../../queries/role-query';
 export class IAMService {
   constructor(@Inject(QueryBus) private readonly queryBus: QueryBus) {}
 
-  public async findUserByCredentials(username: string, password: string) {
-    void password;
+  public async getAccountByUsername(username: string) {
     const account = await this.queryBus.execute(
       new AccountQuery({
         username,

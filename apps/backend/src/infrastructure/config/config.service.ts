@@ -27,4 +27,8 @@ export class AppConfigService {
   get ADMIN_PASSWORD() {
     return this.configService.get('ADMIN_PASSWORD');
   }
+
+  get APP_CRYPTO_SALT() {
+    return this.configService.get('APP_CRYPTO_SALT');
+  }
 }

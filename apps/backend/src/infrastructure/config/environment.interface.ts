@@ -11,4 +11,11 @@ interface DatabaseEnv {
   readonly DB_PORT: string;
 }
 
-export interface EnvironmentConfig extends RootAccountEnv, DatabaseEnv {}
+interface AuthEnv {
+  readonly APP_CRYPTO_SALT: string;
+}
+
+export interface EnvironmentConfig
+  extends RootAccountEnv,
+    DatabaseEnv,
+    AuthEnv {}

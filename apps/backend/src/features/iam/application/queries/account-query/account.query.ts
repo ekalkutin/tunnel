@@ -8,6 +8,7 @@ type Input = {
 type Output = {
   readonly id: string;
   readonly username: string;
+  readonly password: string;
   readonly role: {
     readonly id: string;
     readonly title: string;
