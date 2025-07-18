@@ -8,7 +8,7 @@ import { AccountQueryHandler } from './queries/account-query';
 import { AccountsQueryHandler } from './queries/accounts-query';
 import { RoleQueryHandler } from './queries/role-query';
 import { RolesQueryHandler } from './queries/roles-query';
-import { IAMService } from './services/account/iam.service';
+import { HashPasswordService, IAMService } from './services/account';
 import {
   CreateAccountUseCase,
   CreateRoleUseCase,
@@ -19,6 +19,8 @@ import {
 @Module({
   imports: [IAMPersistenceModule],
   providers: [
+    // Misc
+    HashPasswordService,
     // Accounts
     CreateAccountUseCase,
     CreateAccountHandler,
@@ -36,6 +38,8 @@ import {
     RoleQueryHandler,
   ],
   exports: [
+    // Misc
+    HashPasswordService,
     // Accounts
     CreateAccountUseCase,
     QueryAccountsUseCase,

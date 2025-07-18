@@ -1,12 +1,10 @@
-import { createHash } from 'node:crypto';
-
 import { Inject, Injectable } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 
 import { Account } from 'features/iam/domain';
-import { AppConfigService } from 'infrastructure/config';
 
 import { CreateAccountCommand } from '../../commands/create-account';
+import { HashPasswordService } from '../../services/account';
 
 type Input = {
   readonly username: string;
@@ -17,8 +15,8 @@ type Input = {
 @Injectable()
 export class CreateAccountUseCase {
   constructor(
-    @Inject(AppConfigService)
-    private readonly appConfigService: AppConfigService,
+    @Inject(HashPasswordService)
+    private readonly hashPasswordService: HashPasswordService,
     @Inject(CommandBus) private readonly commandBus: CommandBus,
   ) {}
 
@@ -26,18 +24,10 @@ export class CreateAccountUseCase {
     const account = await this.commandBus.execute(
       new CreateAccountCommand({
         ...input,
-        password: this.hashPasswordWithSalt(input.password),
+        password: this.hashPasswordService.hashPassword(input.password),
       }),
     );
 
     return account;
-  }
-
-  private hashPasswordWithSalt(password: string) {
-    const salt = this.appConfigService.APP_CRYPTO_SALT;
-
-    return createHash('sha256')
-      .update(password + salt)
-      .digest('hex');
   }
 }
