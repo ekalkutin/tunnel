@@ -28,4 +28,13 @@ export class RoleRepositoryAdapter implements RoleRepository {
     });
     return RoleMapper.toDomain(item);
   }
+
+  public async findByCode(code: string): Promise<Role> {
+    const item = await this.prisma.role.findUniqueOrThrow({
+      where: {
+        code,
+      },
+    });
+    return RoleMapper.toDomain(item);
+  }
 }

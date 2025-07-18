@@ -12,6 +12,7 @@ import { HashPasswordService, IAMService } from './services/account';
 import {
   CreateAccountUseCase,
   CreateRoleUseCase,
+  IAMBoostrapUseCase,
   QueryAccountsUseCase,
   QueryRolesUseCase,
 } from './use-cases';
@@ -21,6 +22,7 @@ import {
   providers: [
     // Misc
     HashPasswordService,
+    IAMBoostrapUseCase,
     // Accounts
     CreateAccountUseCase,
     CreateAccountHandler,
