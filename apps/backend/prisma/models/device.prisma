@@ -1,0 +1,9 @@
+model Device {
+  id    String @id
+  title String
+
+  accountId String  @map("account_id")
+  account   Account @relation(fields: [accountId], references: [id])
+
+  @@map("devices")
+}

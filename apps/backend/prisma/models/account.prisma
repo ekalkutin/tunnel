@@ -3,8 +3,10 @@ model Account {
   username String @unique
   password String
 
-  roleId String
+  roleId String @map("role_id")
   role   Role   @relation(fields: [roleId], references: [id])
+
+  devices Device[]
 
   @@map("accounts")
 }
