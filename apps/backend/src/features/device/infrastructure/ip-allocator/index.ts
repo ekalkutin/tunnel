@@ -1,1 +1,1 @@
-export {} from './ip-allocator.adapter';
+export { IPAllocatorAdapter } from './ip-allocator.adapter';
