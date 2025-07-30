@@ -2,6 +2,9 @@ model Device {
   id    String @id
   title String
 
+  ip         String
+  privateKey String
+
   accountId String  @map("account_id")
   account   Account @relation(fields: [accountId], references: [id])
 

@@ -8,6 +8,8 @@ export class DeviceMapper {
       id: props.id,
       accountId: props.accountId,
       title: props.title,
+      ip: props.ip,
+      privateKey: props.privateKey,
     });
   }
 
@@ -16,6 +18,8 @@ export class DeviceMapper {
       id: props.id,
       accountId: props.accountId,
       title: props.title,
+      ip: props.ip,
+      privateKey: props.privateKey,
     };
   }
 }
