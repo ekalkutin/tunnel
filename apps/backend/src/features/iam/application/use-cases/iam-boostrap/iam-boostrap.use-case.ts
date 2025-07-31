@@ -1,4 +1,4 @@
-import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
+import { Inject, Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import { Account, Role } from 'features/iam/domain';
@@ -12,7 +12,7 @@ import { RoleQuery } from '../../queries/role-query';
 import { HashPasswordService } from '../../services/account';
 
 @Injectable()
-export class IAMBoostrapUseCase implements OnModuleInit {
+export class IAMBoostrapUseCase implements OnApplicationBootstrap {
   constructor(
     @Inject(AppConfigService)
     private readonly appConfigService: AppConfigService,
@@ -22,13 +22,7 @@ export class IAMBoostrapUseCase implements OnModuleInit {
     @Inject(CommandBus) private readonly commandBus: CommandBus,
   ) {}
 
-  public async onModuleInit() {
-    setTimeout(() => {
-      this.execute();
-    }, 5000);
-  }
-
-  private async execute() {
+  public async onApplicationBootstrap() {
     const role = await this.createDefaultRoleIfNotExists();
     await this.createDefaultAccountIfNotExists(role.id);
   }
