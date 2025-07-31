@@ -1,8 +1,8 @@
 import { ip2long, long2ip, Netmask } from 'netmask';
 
-import { IPAllocator } from 'features/device/application/ports';
+import { IPAllocatorServicePort } from 'features/device/application/ports';
 
-export class IPAllocatorAdapter implements IPAllocator {
+export class IPAllocatorServiceAdapter implements IPAllocatorServicePort {
   private readonly block: Netmask;
   private readonly allocatedIPs: Set<string>;
 

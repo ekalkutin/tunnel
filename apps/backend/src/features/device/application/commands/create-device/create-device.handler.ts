@@ -3,7 +3,7 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 import { Device, DeviceRepository } from 'features/device/domain';
 
-import { IPAllocator, WireguardServicePort } from '../../ports';
+import { IPAllocatorServicePort, WireguardServicePort } from '../../ports';
 
 import { CreateDeviceCommand } from './create-device.command';
 
@@ -15,7 +15,8 @@ export class CreateDeviceHandler
     @Inject(DeviceRepository)
     private readonly deviceRepository: DeviceRepository,
 
-    @Inject(IPAllocator) private readonly ipAllocator: IPAllocator,
+    @Inject(IPAllocatorServicePort)
+    private readonly ipAllocator: IPAllocatorServicePort,
     @Inject(WireguardServicePort)
     private readonly wireguard: WireguardServicePort,
   ) {}
