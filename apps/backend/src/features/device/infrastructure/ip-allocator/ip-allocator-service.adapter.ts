@@ -1,20 +1,20 @@
+import { Injectable } from '@nestjs/common';
 import { ip2long, long2ip, Netmask } from 'netmask';
 
 import { IPAllocatorServicePort } from 'features/device/application/ports';
 
+@Injectable()
 export class IPAllocatorServiceAdapter implements IPAllocatorServicePort {
   private readonly block: Netmask;
   private readonly allocatedIPs: Set<string>;
 
-  constructor(reservedIPs: Array<string> = []) {
+  constructor() {
     this.block = new Netmask('10.0.0.0/24');
     this.allocatedIPs = new Set();
 
     this.allocatedIPs.add(this.block.first);
     this.allocatedIPs.add(this.block.base);
     this.allocatedIPs.add(this.block.broadcast);
-
-    reservedIPs.forEach(ip => this.allocatedIPs.add(ip));
   }
 
   public allocateIP(): string {
@@ -39,5 +39,9 @@ export class IPAllocatorServiceAdapter implements IPAllocatorServicePort {
     if (this.allocatedIPs.has(ip)) {
       this.allocatedIPs.delete(ip);
     }
+  }
+
+  public reserveIP(ip: string): void {
+    this.allocatedIPs.add(ip);
   }
 }
