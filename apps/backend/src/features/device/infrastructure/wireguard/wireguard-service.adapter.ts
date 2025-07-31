@@ -1,6 +1,6 @@
-import { Wireguard } from 'features/device/application/ports';
+import { WireguardServicePort } from 'features/device/application/ports';
 
-export class WireguardAdapter implements Wireguard {
+export class WireguardServiceAdapter implements WireguardServicePort {
   public generatePrivateKey(): string {
     return 'PRIVATE_KEY';
   }

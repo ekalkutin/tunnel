@@ -1,2 +1,2 @@
 export { IPAllocator } from './ip-allocator.port';
-export { Wireguard } from './wireguard.port';
+export { WireguardServicePort } from './wireguard-service.port';
