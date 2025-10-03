@@ -1,4 +1,8 @@
 import { Module } from '@nestjs/common';
 
-@Module({})
+import { HealthModule } from 'features/health/health.module';
+
+@Module({
+  imports: [HealthModule],
+})
 export class MainModule {}
