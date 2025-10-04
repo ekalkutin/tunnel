@@ -11,7 +11,10 @@ async function bootstrap() {
   app.enableVersioning({
     type: VersioningType.URI,
   });
-  await app.listen(3000);
+  await app.listen(3000, '0.0.0.0', () => {
+    // eslint-disable-next-line no-console
+    console.log('Server started');
+  });
 }
 
 bootstrap()
