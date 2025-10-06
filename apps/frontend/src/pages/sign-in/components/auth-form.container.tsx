@@ -7,6 +7,7 @@ export const AuthFormContainer: React.FC = () => {
   const { keycloak } = useKeycloak();
 
   const authWithGithub = () => {
+    void 0;
     keycloak.login({ idpHint: 'github' });
   };
 
