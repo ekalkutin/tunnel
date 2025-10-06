@@ -1,5 +1,4 @@
 import React from 'react';
-import { AuthFormContainer } from './auth-form/auth-form.container';
 
 import styles from './styles.module.css';
 import PrivateRoute from 'components/private-route/private-route';
