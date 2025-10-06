@@ -18,7 +18,7 @@
     "jsx": "react-jsx",
     "paths": {
       "pages/*": ["./src/pages/*"],
-      "shared/*": ["./src/shared/*"]
+      "components/*": ["./src/components/*"]
     }
   },
   "include": ["src/"]

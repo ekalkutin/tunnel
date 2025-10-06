@@ -74,6 +74,7 @@ const configuration: Configuration = {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
       pages: path.resolve(__dirname, 'src', 'pages'),
+      components: path.resolve(__dirname, 'src', 'components'),
     },
   },
   optimization: {

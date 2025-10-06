@@ -25,7 +25,9 @@
   "license": "ISC",
   "dependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@react-keycloak/web": "^3.4.0",
     "antd": "^5.27.4",
+    "keycloak-js": "^26.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   }
