@@ -3,27 +3,21 @@ import React from 'react';
 import styles from './styles.module.css';
 import PrivateRoute from 'components/private-route/private-route';
 import { useKeycloak } from '@react-keycloak/web';
+import { AuthFormContainer } from './components/auth-form.container';
 
 export const SignInPage: React.FC = () => {
   const { keycloak, initialized } = useKeycloak();
 
-  console.log({ initialized });
-
-  if (!initialized) {
-    return <div>Loading authentication…</div>;
-  }
-
-  if (!keycloak.authenticated) {
-    return <button onClick={() => keycloak.login()}>Login</button>;
-  }
-
   return (
     <div className={styles.container}>
-      <PrivateRoute>
-        <div>Private data</div>
-      </PrivateRoute>
-
-      <button onClick={() => keycloak.logout()}>Logout</button>
+      {!initialized && <div>Loading authentication…</div>}
+      {!keycloak.authenticated && <AuthFormContainer />}
+      {keycloak.authenticated && (
+        <PrivateRoute>
+          <div>Private data</div>
+          <button onClick={() => keycloak.logout()}>Logout</button>
+        </PrivateRoute>
+      )}
     </div>
   );
 };
