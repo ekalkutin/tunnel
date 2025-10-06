@@ -31,5 +31,5 @@ jobs:
           k8s-secret: ${{ secrets.KUBE_TOKEN }}
       - name: Deploy to cluster
         run: |
-          kubectl set image deployment/tunnel tunnel=${{ env.IMAGE_NAME }}:${{ inputs.image_tag }} -n applications
-          kubectl rollout status deployment/tunnel -n applications
+          kubectl set image deployment/tunnel tunnel=${{ env.IMAGE_NAME }}:${{ inputs.image_tag }} -n apps-dev
+          kubectl rollout status deployment/tunnel -n apps-dev
