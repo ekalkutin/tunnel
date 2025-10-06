@@ -11,11 +11,15 @@
     "lib": ["ESNext", "DOM"],
 
     // Paths
-    "rootDir": "src/",
-    "baseUrl": "src/",
+    "rootDir": "./src",
+    "baseUrl": "./",
 
     // Misc
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "pages/*": ["./src/pages/*"],
+      "shared/*": ["./src/shared/*"]
+    }
   },
-  "include": ["src/**/*"]
+  "include": ["src/"]
 }

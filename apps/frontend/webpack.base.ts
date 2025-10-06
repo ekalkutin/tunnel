@@ -73,7 +73,7 @@ const configuration: Configuration = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
-      client: path.resolve(__dirname, 'src', 'client'),
+      pages: path.resolve(__dirname, 'src', 'pages'),
     },
   },
   optimization: {
