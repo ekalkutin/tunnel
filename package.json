@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/ekalkutin/tunnel#readme",
   "workspaces": [
-    "apps/backend"
+    "apps/backend",
+    "apps/frontend"
   ],
   "devDependencies": {
     "eslint": "^9.37.0",

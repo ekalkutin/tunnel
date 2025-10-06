@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    // Modules
+
+    // Emit
+    "noEmit": true,
+
+    // Language and Environment
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+
+    // Paths
+    "rootDir": "src/",
+    "baseUrl": "src/",
+
+    // Misc
+    "jsx": "react-jsx"
+  },
+  "include": ["src/**/*"]
+}
