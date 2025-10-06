@@ -1,5 +1,5 @@
-import { Button } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import React from 'react';
 
 type Props = {

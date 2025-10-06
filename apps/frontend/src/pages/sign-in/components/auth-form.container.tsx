@@ -1,6 +1,7 @@
-import React from 'react';
-import { AuthFormView } from './auth-form.vew';
 import { useKeycloak } from '@react-keycloak/web';
+import React from 'react';
+
+import { AuthFormView } from './auth-form.vew';
 
 export const AuthFormContainer: React.FC = () => {
   const { keycloak } = useKeycloak();

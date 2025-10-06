@@ -1,9 +1,10 @@
+import { useKeycloak } from '@react-keycloak/web';
 import React from 'react';
 
-import styles from './styles.module.css';
 import PrivateRoute from 'components/private-route/private-route';
-import { useKeycloak } from '@react-keycloak/web';
+
 import { AuthFormContainer } from './components/auth-form.container';
+import styles from './styles.module.css';
 
 export const SignInPage: React.FC = () => {
   const { keycloak, initialized } = useKeycloak();

@@ -1,7 +1,7 @@
-import { defineConfig } from 'eslint/config';
 import js from '@eslint/js';
-import ts from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
+import ts from 'typescript-eslint';
 
 export default defineConfig([
   // Global ignores
